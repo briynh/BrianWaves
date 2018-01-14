@@ -1,2 +1,3 @@
 # NWHacks2018
-Muse Headband Security System
+Brianwaves
+- Are you Brian?
