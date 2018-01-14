@@ -1,0 +1,3 @@
+Param([string]$filename)
+
+muse-player -C C:\Users\kenke\museFiles\$fileName -l 5000
