@@ -41,18 +41,28 @@ int compareValues(double[][] receivedData, double[][] databaseData){
 				break;
 			}
 			if (isWithin(databaseData[0][j], receivedData[0][i], timingleeway)){
-				for (int k = 0; k < 4; ++k){
-					if (isWithin(databaseData[k][j], receivedData[k][i], )
+				j_index = j;
+				break;
+			}
+		}
+		for (int k = 0; k < 4; ++k){
+			if (!isWithin(databaseData[k][j_index], receivedData[k][i]), leeway){		//Iffy on the logic of this line
+				--failureThreshold[k];
+				if (failureThreshold[k] == 0){
+					return 100; //FAILED!
 				}
 			}
 		}
 	}
 
+	return 0;
 }
 
-static bool isWithin(double one, double two, double threshold){
+static bool isWithin(double one, double two, double threshold, bool signed = false){
 	double diff = one - two;
-	diff = (diff < 0 ? -1*diff : diff);
+	if (signed == false){
+		diff = (diff < 0 ? -1*diff : diff);	
+	}
 	if (diff < threshold){
 		return true;
 	} else {
